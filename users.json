@@ -3,5 +3,10 @@
     "name": "Name",
     "stage": 6,
     "messages": []
+  },
+  {
+    "name": "gamerlore",
+    "stage": 6,
+    "messages": []
   }
 ]
