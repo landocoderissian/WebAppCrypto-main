@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         storyText.textContent = data.story;
         passcodeInput.value = '';
         // Hide the form if the final stage is reached
-        if (data.story.includes('skibidi')) {
+        if (data.story.includes('YAY')) {
           nextStageForm.style.display = 'none';
         }
       } else {
