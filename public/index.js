@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = document.getElementById('name').value;
   
     try {
-      const response = await fetch('http://152.3.43.71:3000/start', {
+      const response = await fetch('http://10.194.24.127:3000/start', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name })
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passcode = passcodeInput.value;
   
     try {
-      const response = await fetch('http://152.3.43.71:3000/next', {
+      const response = await fetch('http://10.194.24.127:3000/next', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, passcode })
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 
-  const apiUrl = 'http://152.3.43.71:3000'; // Update with your server URL
+  const apiUrl = 'http://10.194.24.127:3000'; // Update with your server URL
   const updateInterval = 5000; // Check for new messages every 5 seconds
 
   function startPollingForMessages(name) {
