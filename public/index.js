@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   const startForm = document.getElementById('startForm');
   const storyContainer = document.getElementById('storyContainer');
@@ -9,26 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
   startForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const name = document.getElementById('name').value;
-
-    // Check if the name is in users.json
+  
     try {
-      const response = await fetch('http:localhost:3000/users');
-      const users = await response.json();
-      if (!users.includes(name)) {
-        alert('Name not found in users list');
-        return;
-      }
-    } catch (error) {
-      console.error('Error fetching users list:', error);
-      alert('Error fetching users list: ' + error.message);
-      return;
-    }
-    try {
-      const response = await fetch('http:localhost:3000/start', {
+      const response = await fetch('https://something/start', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name })
       });
+  
       const data = await response.json();
       alert(data.story);
       storyContainer.style.display = 'block';
@@ -45,18 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const name = document.getElementById('name').value;
     const passcode = passcodeInput.value;
-
+  //Wherever it says a link, if it says "something", then replace that something with the real url to your website. If it says something at the end (an endpoint) like /next or /start, don't remove it.
     try {
-      const response = await fetch('http:localhost:3000/next', {
+      const response = await fetch('https://something/next', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, passcode })
       });
-
+  
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+  
       const data = await response.json();
       if (data.success) {
         storyText.textContent = data.story;
@@ -73,8 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Error progressing to next stage: ' + error.message);
     }
   });
+  
 
-  const apiUrl = 'http:localhost:3000'; // Update with your server URL
+  const apiUrl = 'https://something'; // Update with your server URL
   const updateInterval = 5000; // Check for new messages every 5 seconds
 
   function startPollingForMessages(name) {
@@ -84,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
         const messages = await response.json();
         if (JSON.stringify(messages) !== JSON.stringify(lastMessages)) {
           lastMessages = messages;
@@ -108,7 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     alertContainer.style.textAlign = 'center';
     alertContainer.style.padding = '1em';
     alertContainer.textContent = `New message: ${message}`;
+    
     document.body.appendChild(alertContainer);
+    
     setTimeout(() => {
       alertContainer.remove();
     }, 5000);
